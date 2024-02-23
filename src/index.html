@@ -1,16 +1,28 @@
+<!--
+  **NOTE:** This is a template index.html.
+  It uses ejs and htmlWebpackPlugin to generate a different index.html for each environment.
+  htmlWebpackPlugin will dynamically add references to the scripts and styles that it bundles
+  to this file. The generated bundles have hash-based filenames,
+  so it's necessary to add the reference dynamically.
+  For more info on ejs, see https://ejs.co/.
+  For examples using ir with htmlWebpackPlugin,
+  see https://github.com/jaketrent/html-webpack-template/blob/master/index.ejs
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <% if (htmlWebpackPlugin.options.trackJSToken) { %>
+    <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+    <script>
+      window.TrackJS && TrackJS.install({
+        token: '<%=htmlWebpackPlugin.options.trackJSToken%>'
+        // for more configuration options, see https://docs.trackjs.com
+      });
+    </script>
+  <% } %>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
-  <script>
-    window.TrackJS && TrackJS.install({
-      token: "a5987da6c20f4712aeb6ea2b59adc051"
-      // for more configuration options, see https://docs.trackjs.com
-    });
-  </script>
 </head>
 <body>
   <h1>Users</h1>

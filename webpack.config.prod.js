@@ -22,6 +22,9 @@ export default {
     // Create HTML File that includes reference to bundled JS.
     new HtmlWebpackPlugin({
       template: "src/index.html",
+      // Properties you define here are available in index.html
+      // using htmlWebpackPlugin.options.varName
+      trackJSToken: "a5987da6c20f4712aeb6ea2b59adc051",
     }),
   ],
   module: {
